@@ -1,36 +1,16 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/models/article_model.dart';
-import 'package:newsapp/service/news_service.dart';
-import 'package:newsapp/widgets/loading.dart';
 import 'package:newsapp/widgets/news_tile.dart';
 
-class NewsListView extends StatefulWidget {
-  const NewsListView({super.key});
+class NewsListView extends StatelessWidget {
+  const NewsListView({super.key, required this.articles});
 
-  @override
-  State<NewsListView> createState() => _NewsListViewState();
-}
-
-class _NewsListViewState extends State<NewsListView> {
-  List<ArticleModel> articles = [];
-  bool isLoding =true;
-  @override
-  void initState() {
-    super.initState();
-    getGenaralNews();
-  }
-
-  Future<void> getGenaralNews() async {
-    articles = await NewsService(Dio()).gitGenarlNews();
-    isLoding =false;
-    setState(() {});
-  }
+ final List<ArticleModel> articles ;
 
   @override
   Widget build(BuildContext context) {
    
-    return !isLoding ? SliverFillRemaining(child: Loadings()): SliverList(
+    return SliverList(
       delegate: SliverChildBuilderDelegate(childCount: articles.length, (
         Context,
         Index,
