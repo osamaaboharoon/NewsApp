@@ -32,6 +32,8 @@ class _NewsListViewBuildState extends State<NewsListViewBuild> {
   Widget build(BuildContext context) {
     return isLoading
         ? SliverFillRemaining(hasScrollBody: false, child: Loadings())
-        : NewsListView(articles: articles);
+        : articles.isEmpty ?
+        SliverToBoxAdapter(child: Text('error'),):
+         NewsListView(articles: articles);
   }
 }
