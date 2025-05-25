@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:newsapp/models/article_model.dart';
 
 class NewsService {
@@ -24,7 +25,7 @@ Future<List<ArticleModel>>  gitGenarlNews() async {
   }
   return articlesList ;
 }  catch (e) {
-return  [];
+return [];
 }
 
 
