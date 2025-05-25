@@ -10,7 +10,7 @@ NewsService(this.dio);
 Future<List<ArticleModel>>  gitGenarlNews() async {
 
   try {
-  var respons = await dio.get('https://newsapi.org/v2/top-headlines?apiKey=053eb0061d4a400ca1921d035938f42e&category=generalss');
+  var respons = await dio.get('https://newsapi.org/v2/top-headlines?apiKey=053eb0061d4a400ca1921d035938f42e&category=general');
   Map<String,dynamic> jsonData  =  respons.data;
    List<dynamic> articles = jsonData['articles'];
   List<ArticleModel> articlesList=[
