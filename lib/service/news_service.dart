@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:newsapp/models/article_model.dart';
 
 class NewsService {
@@ -8,10 +7,10 @@ class NewsService {
   
 NewsService(this.dio);
   
-Future<List<ArticleModel>>  gitGenarlNews() async {
+Future<List<ArticleModel>>  getTopHeadlines({required String category}) async {
 
   try {
-  var respons = await dio.get('https://newsapi.org/v2/top-headlines?apiKey=053eb0061d4a400ca1921d035938f42e&category=general');
+  var respons = await dio.get('https://newsapi.org/v2/top-headlines?apiKey=053eb0061d4a400ca1921d035938f42e&category=$category');
   Map<String,dynamic> jsonData  =  respons.data;
    List<dynamic> articles = jsonData['articles'];
   List<ArticleModel> articlesList=[
